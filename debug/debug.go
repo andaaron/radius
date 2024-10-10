@@ -145,9 +145,9 @@ type attributesElement struct {
 	Attrs []radius.Attribute
 }
 
-func sortedAttributes(attributes radius.Attributes) []attributesElement {
+func sortedAttributes(attributes *radius.Attributes) []attributesElement {
 	var sortedAttrs []attributesElement
-	for attrsType, attrs := range attributes {
+	for attrsType, attrs := range attributes.GetInternalMap() {
 		sortedAttrs = append(sortedAttrs, attributesElement{
 			Type:  attrsType,
 			Attrs: attrs,

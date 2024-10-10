@@ -70,7 +70,7 @@ func Test_RFC2865_7_1(t *testing.T) {
 		Identifier:    p.Identifier,
 		Authenticator: p.Authenticator,
 		Secret:        secret,
-		Attributes:    make(radius.Attributes),
+		Attributes:    radius.NewAttributes(),
 	}
 	rfc2865.ServiceType_Set(&q, rfc2865.ServiceType(1))
 	rfc2865.LoginService_Set(&q, rfc2865.LoginService(0))
@@ -325,16 +325,16 @@ func RADIUSPacketsEqual(a, b []byte) bool {
 		panic(err)
 	}
 
-	if len(aa) != len(ab) {
+	if aa.Len() != ab.Len() {
 		return false
 	}
 
-	for typeA, attrsA := range aa {
-		if len(attrsA) != len(ab[typeA]) {
+	for typeA, attrsA := range aa.GetInternalMap() {
+		if len(attrsA) != len(ab.GetAll(typeA)) {
 			return false
 		}
 		for i, attrA := range attrsA {
-			if !bytes.Equal([]byte(attrA), []byte(ab[typeA][i])) {
+			if !bytes.Equal([]byte(attrA), []byte(ab.GetAll(typeA)[i])) {
 				return false
 			}
 		}

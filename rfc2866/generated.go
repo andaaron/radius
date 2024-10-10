@@ -63,7 +63,7 @@ func AcctStatusType_Get(p *radius.Packet) (value AcctStatusType) {
 
 func AcctStatusType_Gets(p *radius.Packet) (values []AcctStatusType, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctStatusType_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctStatusType_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -122,7 +122,7 @@ func AcctDelayTime_Get(p *radius.Packet) (value AcctDelayTime) {
 
 func AcctDelayTime_Gets(p *radius.Packet) (values []AcctDelayTime, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctDelayTime_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctDelayTime_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -181,7 +181,7 @@ func AcctInputOctets_Get(p *radius.Packet) (value AcctInputOctets) {
 
 func AcctInputOctets_Gets(p *radius.Packet) (values []AcctInputOctets, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctInputOctets_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctInputOctets_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -240,7 +240,7 @@ func AcctOutputOctets_Get(p *radius.Packet) (value AcctOutputOctets) {
 
 func AcctOutputOctets_Gets(p *radius.Packet) (values []AcctOutputOctets, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctOutputOctets_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctOutputOctets_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -307,7 +307,7 @@ func AcctSessionID_GetString(p *radius.Packet) (value string) {
 
 func AcctSessionID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[AcctSessionID_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctSessionID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -319,7 +319,7 @@ func AcctSessionID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func AcctSessionID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[AcctSessionID_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctSessionID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -409,7 +409,7 @@ func AcctAuthentic_Get(p *radius.Packet) (value AcctAuthentic) {
 
 func AcctAuthentic_Gets(p *radius.Packet) (values []AcctAuthentic, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctAuthentic_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctAuthentic_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -468,7 +468,7 @@ func AcctSessionTime_Get(p *radius.Packet) (value AcctSessionTime) {
 
 func AcctSessionTime_Gets(p *radius.Packet) (values []AcctSessionTime, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctSessionTime_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctSessionTime_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -527,7 +527,7 @@ func AcctInputPackets_Get(p *radius.Packet) (value AcctInputPackets) {
 
 func AcctInputPackets_Gets(p *radius.Packet) (values []AcctInputPackets, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctInputPackets_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctInputPackets_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -586,7 +586,7 @@ func AcctOutputPackets_Get(p *radius.Packet) (value AcctOutputPackets) {
 
 func AcctOutputPackets_Gets(p *radius.Packet) (values []AcctOutputPackets, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctOutputPackets_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctOutputPackets_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -685,7 +685,7 @@ func AcctTerminateCause_Get(p *radius.Packet) (value AcctTerminateCause) {
 
 func AcctTerminateCause_Gets(p *radius.Packet) (values []AcctTerminateCause, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctTerminateCause_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctTerminateCause_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -752,7 +752,7 @@ func AcctMultiSessionID_GetString(p *radius.Packet) (value string) {
 
 func AcctMultiSessionID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[AcctMultiSessionID_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctMultiSessionID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -764,7 +764,7 @@ func AcctMultiSessionID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func AcctMultiSessionID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[AcctMultiSessionID_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctMultiSessionID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -842,7 +842,7 @@ func AcctLinkCount_Get(p *radius.Packet) (value AcctLinkCount) {
 
 func AcctLinkCount_Gets(p *radius.Packet) (values []AcctLinkCount, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctLinkCount_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctLinkCount_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return

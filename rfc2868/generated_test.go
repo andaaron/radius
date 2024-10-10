@@ -10,7 +10,7 @@ import (
 func Test_Tags(t *testing.T) {
 	{
 		p := &radius.Packet{
-			Attributes: make(radius.Attributes),
+			Attributes: radius.NewAttributes(),
 		}
 		if err := TunnelType_Set(p, 11, TunnelType_Value_IP); err != nil {
 			t.Fatalf("unexpected err: %s", err)
@@ -22,7 +22,7 @@ func Test_Tags(t *testing.T) {
 
 	{
 		p := &radius.Packet{
-			Attributes: make(radius.Attributes),
+			Attributes: radius.NewAttributes(),
 		}
 		if err := TunnelAssignmentID_SetString(p, 4, "alt"); err != nil {
 			t.Fatalf("unexpected err: %s", err)
@@ -34,7 +34,7 @@ func Test_Tags(t *testing.T) {
 
 	{
 		p := &radius.Packet{
-			Attributes: make(radius.Attributes),
+			Attributes: radius.NewAttributes(),
 		}
 		if err := TunnelAssignmentID_SetString(p, 0, "alt"); err != nil {
 			t.Fatalf("unexpected err: %s", err)

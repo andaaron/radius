@@ -34,7 +34,7 @@ func NASIPv6Address_Get(p *radius.Packet) (value net.IP) {
 
 func NASIPv6Address_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[NASIPv6Address_Type] {
+	for _, attr := range p.Attributes.GetAll(NASIPv6Address_Type) {
 		i, err = radius.IPv6Addr(attr)
 		if err != nil {
 			return
@@ -85,7 +85,7 @@ func FramedInterfaceID_Get(p *radius.Packet) (value net.HardwareAddr) {
 
 func FramedInterfaceID_Gets(p *radius.Packet) (values []net.HardwareAddr, err error) {
 	var i net.HardwareAddr
-	for _, attr := range p.Attributes[FramedInterfaceID_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedInterfaceID_Type) {
 		i, err = radius.IFID(attr)
 		if err != nil {
 			return
@@ -136,7 +136,7 @@ func FramedIPv6Prefix_Get(p *radius.Packet) (value *net.IPNet) {
 
 func FramedIPv6Prefix_Gets(p *radius.Packet) (values []*net.IPNet, err error) {
 	var i *net.IPNet
-	for _, attr := range p.Attributes[FramedIPv6Prefix_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPv6Prefix_Type) {
 		i, err = radius.IPv6Prefix(attr)
 		if err != nil {
 			return
@@ -187,7 +187,7 @@ func LoginIPv6Host_Get(p *radius.Packet) (value net.IP) {
 
 func LoginIPv6Host_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[LoginIPv6Host_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginIPv6Host_Type) {
 		i, err = radius.IPv6Addr(attr)
 		if err != nil {
 			return
@@ -253,7 +253,7 @@ func FramedIPv6Route_GetString(p *radius.Packet) (value string) {
 
 func FramedIPv6Route_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[FramedIPv6Route_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPv6Route_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -265,7 +265,7 @@ func FramedIPv6Route_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func FramedIPv6Route_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[FramedIPv6Route_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPv6Route_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -351,7 +351,7 @@ func FramedIPv6Pool_GetString(p *radius.Packet) (value string) {
 
 func FramedIPv6Pool_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[FramedIPv6Pool_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPv6Pool_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -363,7 +363,7 @@ func FramedIPv6Pool_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func FramedIPv6Pool_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[FramedIPv6Pool_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPv6Pool_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return

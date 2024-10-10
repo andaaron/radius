@@ -65,7 +65,7 @@ func AcctTunnelConnection_GetString(p *radius.Packet) (value string) {
 
 func AcctTunnelConnection_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[AcctTunnelConnection_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctTunnelConnection_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -77,7 +77,7 @@ func AcctTunnelConnection_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func AcctTunnelConnection_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[AcctTunnelConnection_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctTunnelConnection_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -155,7 +155,7 @@ func AcctTunnelPacketsLost_Get(p *radius.Packet) (value AcctTunnelPacketsLost) {
 
 func AcctTunnelPacketsLost_Gets(p *radius.Packet) (values []AcctTunnelPacketsLost, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[AcctTunnelPacketsLost_Type] {
+	for _, attr := range p.Attributes.GetAll(AcctTunnelPacketsLost_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return

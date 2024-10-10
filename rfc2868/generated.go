@@ -79,7 +79,7 @@ func TunnelType_Get(p *radius.Packet) (tag byte, value TunnelType) {
 
 func TunnelType_Gets(p *radius.Packet) (tags []byte, values []TunnelType, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[TunnelType_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelType_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -192,7 +192,7 @@ func TunnelMediumType_Get(p *radius.Packet) (tag byte, value TunnelMediumType) {
 
 func TunnelMediumType_Gets(p *radius.Packet) (tags []byte, values []TunnelMediumType, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[TunnelMediumType_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelMediumType_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -280,7 +280,7 @@ func TunnelClientEndpoint_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelClientEndpoint_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelClientEndpoint_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelClientEndpoint_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -298,7 +298,7 @@ func TunnelClientEndpoint_Gets(p *radius.Packet) (tags []byte, values [][]byte, 
 
 func TunnelClientEndpoint_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelClientEndpoint_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelClientEndpoint_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -410,7 +410,7 @@ func TunnelServerEndpoint_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelServerEndpoint_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelServerEndpoint_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelServerEndpoint_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -428,7 +428,7 @@ func TunnelServerEndpoint_Gets(p *radius.Packet) (tags []byte, values [][]byte, 
 
 func TunnelServerEndpoint_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelServerEndpoint_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelServerEndpoint_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -550,7 +550,7 @@ func TunnelPassword_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelPassword_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelPassword_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -568,7 +568,7 @@ func TunnelPassword_Gets(p *radius.Packet) (tags []byte, values [][]byte, err er
 
 func TunnelPassword_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelPassword_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -698,7 +698,7 @@ func TunnelPrivateGroupID_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelPrivateGroupID_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelPrivateGroupID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelPrivateGroupID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -716,7 +716,7 @@ func TunnelPrivateGroupID_Gets(p *radius.Packet) (tags []byte, values [][]byte, 
 
 func TunnelPrivateGroupID_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelPrivateGroupID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelPrivateGroupID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -828,7 +828,7 @@ func TunnelAssignmentID_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelAssignmentID_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelAssignmentID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelAssignmentID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -846,7 +846,7 @@ func TunnelAssignmentID_Gets(p *radius.Packet) (tags []byte, values [][]byte, er
 
 func TunnelAssignmentID_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelAssignmentID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelAssignmentID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -949,7 +949,7 @@ func TunnelPreference_Get(p *radius.Packet) (tag byte, value TunnelPreference) {
 
 func TunnelPreference_Gets(p *radius.Packet) (tags []byte, values []TunnelPreference, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[TunnelPreference_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelPreference_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -1037,7 +1037,7 @@ func TunnelClientAuthID_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelClientAuthID_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelClientAuthID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelClientAuthID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -1055,7 +1055,7 @@ func TunnelClientAuthID_Gets(p *radius.Packet) (tags []byte, values [][]byte, er
 
 func TunnelClientAuthID_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelClientAuthID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelClientAuthID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -1167,7 +1167,7 @@ func TunnelServerAuthID_GetString(p *radius.Packet) (tag byte, value string) {
 
 func TunnelServerAuthID_Gets(p *radius.Packet) (tags []byte, values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[TunnelServerAuthID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelServerAuthID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]
@@ -1185,7 +1185,7 @@ func TunnelServerAuthID_Gets(p *radius.Packet) (tags []byte, values [][]byte, er
 
 func TunnelServerAuthID_GetStrings(p *radius.Packet) (tags []byte, values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[TunnelServerAuthID_Type] {
+	for _, attr := range p.Attributes.GetAll(TunnelServerAuthID_Type) {
 		var tag byte
 		if len(attr) >= 1 && attr[0] <= 0x1F {
 			tag = attr[0]

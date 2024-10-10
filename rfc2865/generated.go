@@ -85,7 +85,7 @@ func UserName_GetString(p *radius.Packet) (value string) {
 
 func UserName_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[UserName_Type] {
+	for _, attr := range p.Attributes.GetAll(UserName_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -97,7 +97,7 @@ func UserName_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func UserName_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[UserName_Type] {
+	for _, attr := range p.Attributes.GetAll(UserName_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -183,7 +183,7 @@ func UserPassword_GetString(p *radius.Packet) (value string) {
 
 func UserPassword_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[UserPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(UserPassword_Type) {
 		i, err = radius.UserPassword(attr, p.Secret, p.Authenticator[:])
 		if err != nil {
 			return
@@ -195,7 +195,7 @@ func UserPassword_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func UserPassword_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[UserPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(UserPassword_Type) {
 		var up []byte
 		up, err = radius.UserPassword(attr, p.Secret, p.Authenticator[:])
 		if err == nil {
@@ -289,7 +289,7 @@ func CHAPPassword_GetString(p *radius.Packet) (value string) {
 
 func CHAPPassword_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CHAPPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(CHAPPassword_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -301,7 +301,7 @@ func CHAPPassword_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CHAPPassword_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CHAPPassword_Type] {
+	for _, attr := range p.Attributes.GetAll(CHAPPassword_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -372,7 +372,7 @@ func NASIPAddress_Get(p *radius.Packet) (value net.IP) {
 
 func NASIPAddress_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[NASIPAddress_Type] {
+	for _, attr := range p.Attributes.GetAll(NASIPAddress_Type) {
 		i, err = radius.IPAddr(attr)
 		if err != nil {
 			return
@@ -430,7 +430,7 @@ func NASPort_Get(p *radius.Packet) (value NASPort) {
 
 func NASPort_Gets(p *radius.Packet) (values []NASPort, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[NASPort_Type] {
+	for _, attr := range p.Attributes.GetAll(NASPort_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -515,7 +515,7 @@ func ServiceType_Get(p *radius.Packet) (value ServiceType) {
 
 func ServiceType_Gets(p *radius.Packet) (values []ServiceType, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[ServiceType_Type] {
+	for _, attr := range p.Attributes.GetAll(ServiceType_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -590,7 +590,7 @@ func FramedProtocol_Get(p *radius.Packet) (value FramedProtocol) {
 
 func FramedProtocol_Gets(p *radius.Packet) (values []FramedProtocol, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedProtocol_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedProtocol_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -642,7 +642,7 @@ func FramedIPAddress_Get(p *radius.Packet) (value net.IP) {
 
 func FramedIPAddress_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[FramedIPAddress_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPAddress_Type) {
 		i, err = radius.IPAddr(attr)
 		if err != nil {
 			return
@@ -693,7 +693,7 @@ func FramedIPNetmask_Get(p *radius.Packet) (value net.IP) {
 
 func FramedIPNetmask_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[FramedIPNetmask_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPNetmask_Type) {
 		i, err = radius.IPAddr(attr)
 		if err != nil {
 			return
@@ -763,7 +763,7 @@ func FramedRouting_Get(p *radius.Packet) (value FramedRouting) {
 
 func FramedRouting_Gets(p *radius.Packet) (values []FramedRouting, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedRouting_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedRouting_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -830,7 +830,7 @@ func FilterID_GetString(p *radius.Packet) (value string) {
 
 func FilterID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[FilterID_Type] {
+	for _, attr := range p.Attributes.GetAll(FilterID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -842,7 +842,7 @@ func FilterID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func FilterID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[FilterID_Type] {
+	for _, attr := range p.Attributes.GetAll(FilterID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -920,7 +920,7 @@ func FramedMTU_Get(p *radius.Packet) (value FramedMTU) {
 
 func FramedMTU_Gets(p *radius.Packet) (values []FramedMTU, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedMTU_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedMTU_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -991,7 +991,7 @@ func FramedCompression_Get(p *radius.Packet) (value FramedCompression) {
 
 func FramedCompression_Gets(p *radius.Packet) (values []FramedCompression, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedCompression_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedCompression_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -1043,7 +1043,7 @@ func LoginIPHost_Get(p *radius.Packet) (value net.IP) {
 
 func LoginIPHost_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[LoginIPHost_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginIPHost_Type) {
 		i, err = radius.IPAddr(attr)
 		if err != nil {
 			return
@@ -1121,7 +1121,7 @@ func LoginService_Get(p *radius.Packet) (value LoginService) {
 
 func LoginService_Gets(p *radius.Packet) (values []LoginService, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[LoginService_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginService_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -1190,7 +1190,7 @@ func LoginTCPPort_Get(p *radius.Packet) (value LoginTCPPort) {
 
 func LoginTCPPort_Gets(p *radius.Packet) (values []LoginTCPPort, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[LoginTCPPort_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginTCPPort_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -1257,7 +1257,7 @@ func ReplyMessage_GetString(p *radius.Packet) (value string) {
 
 func ReplyMessage_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[ReplyMessage_Type] {
+	for _, attr := range p.Attributes.GetAll(ReplyMessage_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1269,7 +1269,7 @@ func ReplyMessage_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func ReplyMessage_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[ReplyMessage_Type] {
+	for _, attr := range p.Attributes.GetAll(ReplyMessage_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1355,7 +1355,7 @@ func CallbackNumber_GetString(p *radius.Packet) (value string) {
 
 func CallbackNumber_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CallbackNumber_Type] {
+	for _, attr := range p.Attributes.GetAll(CallbackNumber_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1367,7 +1367,7 @@ func CallbackNumber_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CallbackNumber_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CallbackNumber_Type] {
+	for _, attr := range p.Attributes.GetAll(CallbackNumber_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1453,7 +1453,7 @@ func CallbackID_GetString(p *radius.Packet) (value string) {
 
 func CallbackID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CallbackID_Type] {
+	for _, attr := range p.Attributes.GetAll(CallbackID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1465,7 +1465,7 @@ func CallbackID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CallbackID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CallbackID_Type] {
+	for _, attr := range p.Attributes.GetAll(CallbackID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1551,7 +1551,7 @@ func FramedRoute_GetString(p *radius.Packet) (value string) {
 
 func FramedRoute_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[FramedRoute_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedRoute_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1563,7 +1563,7 @@ func FramedRoute_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func FramedRoute_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[FramedRoute_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedRoute_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1634,7 +1634,7 @@ func FramedIPXNetwork_Get(p *radius.Packet) (value net.IP) {
 
 func FramedIPXNetwork_Gets(p *radius.Packet) (values []net.IP, err error) {
 	var i net.IP
-	for _, attr := range p.Attributes[FramedIPXNetwork_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedIPXNetwork_Type) {
 		i, err = radius.IPAddr(attr)
 		if err != nil {
 			return
@@ -1700,7 +1700,7 @@ func State_GetString(p *radius.Packet) (value string) {
 
 func State_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[State_Type] {
+	for _, attr := range p.Attributes.GetAll(State_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1712,7 +1712,7 @@ func State_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func State_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[State_Type] {
+	for _, attr := range p.Attributes.GetAll(State_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1798,7 +1798,7 @@ func Class_GetString(p *radius.Packet) (value string) {
 
 func Class_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[Class_Type] {
+	for _, attr := range p.Attributes.GetAll(Class_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -1810,7 +1810,7 @@ func Class_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func Class_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[Class_Type] {
+	for _, attr := range p.Attributes.GetAll(Class_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -1888,7 +1888,7 @@ func SessionTimeout_Get(p *radius.Packet) (value SessionTimeout) {
 
 func SessionTimeout_Gets(p *radius.Packet) (values []SessionTimeout, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[SessionTimeout_Type] {
+	for _, attr := range p.Attributes.GetAll(SessionTimeout_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -1947,7 +1947,7 @@ func IdleTimeout_Get(p *radius.Packet) (value IdleTimeout) {
 
 func IdleTimeout_Gets(p *radius.Packet) (values []IdleTimeout, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[IdleTimeout_Type] {
+	for _, attr := range p.Attributes.GetAll(IdleTimeout_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -2014,7 +2014,7 @@ func TerminationAction_Get(p *radius.Packet) (value TerminationAction) {
 
 func TerminationAction_Gets(p *radius.Packet) (values []TerminationAction, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[TerminationAction_Type] {
+	for _, attr := range p.Attributes.GetAll(TerminationAction_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -2081,7 +2081,7 @@ func CalledStationID_GetString(p *radius.Packet) (value string) {
 
 func CalledStationID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CalledStationID_Type] {
+	for _, attr := range p.Attributes.GetAll(CalledStationID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2093,7 +2093,7 @@ func CalledStationID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CalledStationID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CalledStationID_Type] {
+	for _, attr := range p.Attributes.GetAll(CalledStationID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2179,7 +2179,7 @@ func CallingStationID_GetString(p *radius.Packet) (value string) {
 
 func CallingStationID_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CallingStationID_Type] {
+	for _, attr := range p.Attributes.GetAll(CallingStationID_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2191,7 +2191,7 @@ func CallingStationID_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CallingStationID_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CallingStationID_Type] {
+	for _, attr := range p.Attributes.GetAll(CallingStationID_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2277,7 +2277,7 @@ func NASIdentifier_GetString(p *radius.Packet) (value string) {
 
 func NASIdentifier_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[NASIdentifier_Type] {
+	for _, attr := range p.Attributes.GetAll(NASIdentifier_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2289,7 +2289,7 @@ func NASIdentifier_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func NASIdentifier_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[NASIdentifier_Type] {
+	for _, attr := range p.Attributes.GetAll(NASIdentifier_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2375,7 +2375,7 @@ func ProxyState_GetString(p *radius.Packet) (value string) {
 
 func ProxyState_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[ProxyState_Type] {
+	for _, attr := range p.Attributes.GetAll(ProxyState_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2387,7 +2387,7 @@ func ProxyState_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func ProxyState_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[ProxyState_Type] {
+	for _, attr := range p.Attributes.GetAll(ProxyState_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2473,7 +2473,7 @@ func LoginLATService_GetString(p *radius.Packet) (value string) {
 
 func LoginLATService_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[LoginLATService_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATService_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2485,7 +2485,7 @@ func LoginLATService_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func LoginLATService_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[LoginLATService_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATService_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2571,7 +2571,7 @@ func LoginLATNode_GetString(p *radius.Packet) (value string) {
 
 func LoginLATNode_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[LoginLATNode_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATNode_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2583,7 +2583,7 @@ func LoginLATNode_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func LoginLATNode_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[LoginLATNode_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATNode_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2669,7 +2669,7 @@ func LoginLATGroup_GetString(p *radius.Packet) (value string) {
 
 func LoginLATGroup_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[LoginLATGroup_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATGroup_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2681,7 +2681,7 @@ func LoginLATGroup_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func LoginLATGroup_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[LoginLATGroup_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATGroup_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2759,7 +2759,7 @@ func FramedAppleTalkLink_Get(p *radius.Packet) (value FramedAppleTalkLink) {
 
 func FramedAppleTalkLink_Gets(p *radius.Packet) (values []FramedAppleTalkLink, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedAppleTalkLink_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedAppleTalkLink_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -2818,7 +2818,7 @@ func FramedAppleTalkNetwork_Get(p *radius.Packet) (value FramedAppleTalkNetwork)
 
 func FramedAppleTalkNetwork_Gets(p *radius.Packet) (values []FramedAppleTalkNetwork, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[FramedAppleTalkNetwork_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedAppleTalkNetwork_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -2885,7 +2885,7 @@ func FramedAppleTalkZone_GetString(p *radius.Packet) (value string) {
 
 func FramedAppleTalkZone_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[FramedAppleTalkZone_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedAppleTalkZone_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2897,7 +2897,7 @@ func FramedAppleTalkZone_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func FramedAppleTalkZone_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[FramedAppleTalkZone_Type] {
+	for _, attr := range p.Attributes.GetAll(FramedAppleTalkZone_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -2983,7 +2983,7 @@ func CHAPChallenge_GetString(p *radius.Packet) (value string) {
 
 func CHAPChallenge_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[CHAPChallenge_Type] {
+	for _, attr := range p.Attributes.GetAll(CHAPChallenge_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -2995,7 +2995,7 @@ func CHAPChallenge_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func CHAPChallenge_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[CHAPChallenge_Type] {
+	for _, attr := range p.Attributes.GetAll(CHAPChallenge_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return
@@ -3117,7 +3117,7 @@ func NASPortType_Get(p *radius.Packet) (value NASPortType) {
 
 func NASPortType_Gets(p *radius.Packet) (values []NASPortType, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[NASPortType_Type] {
+	for _, attr := range p.Attributes.GetAll(NASPortType_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -3176,7 +3176,7 @@ func PortLimit_Get(p *radius.Packet) (value PortLimit) {
 
 func PortLimit_Gets(p *radius.Packet) (values []PortLimit, err error) {
 	var i uint32
-	for _, attr := range p.Attributes[PortLimit_Type] {
+	for _, attr := range p.Attributes.GetAll(PortLimit_Type) {
 		i, err = radius.Integer(attr)
 		if err != nil {
 			return
@@ -3243,7 +3243,7 @@ func LoginLATPort_GetString(p *radius.Packet) (value string) {
 
 func LoginLATPort_Gets(p *radius.Packet) (values [][]byte, err error) {
 	var i []byte
-	for _, attr := range p.Attributes[LoginLATPort_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATPort_Type) {
 		i = radius.Bytes(attr)
 		if err != nil {
 			return
@@ -3255,7 +3255,7 @@ func LoginLATPort_Gets(p *radius.Packet) (values [][]byte, err error) {
 
 func LoginLATPort_GetStrings(p *radius.Packet) (values []string, err error) {
 	var i string
-	for _, attr := range p.Attributes[LoginLATPort_Type] {
+	for _, attr := range p.Attributes.GetAll(LoginLATPort_Type) {
 		i = radius.String(attr)
 		if err != nil {
 			return

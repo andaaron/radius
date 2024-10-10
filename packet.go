@@ -17,7 +17,7 @@ type Packet struct {
 	Identifier    byte
 	Authenticator [16]byte
 	Secret        []byte
-	Attributes
+	*Attributes
 }
 
 // New creates a new packet with the Code, Secret fields set to the given
@@ -35,7 +35,7 @@ func New(code Code, secret []byte) *Packet {
 		Code:       code,
 		Identifier: buff[0],
 		Secret:     secret,
-		Attributes: make(Attributes),
+		Attributes: NewAttributes(),
 	}
 	copy(packet.Authenticator[:], buff[1:])
 	return packet
@@ -75,7 +75,7 @@ func (p *Packet) Response(code Code) *Packet {
 		Code:       code,
 		Identifier: p.Identifier,
 		Secret:     p.Secret,
-		Attributes: make(Attributes),
+		Attributes: NewAttributes(),
 	}
 	copy(q.Authenticator[:], p.Authenticator[:])
 	return q

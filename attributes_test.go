@@ -19,7 +19,7 @@ func TestParseAttributes_invalid(t *testing.T) {
 
 	for _, test := range tests {
 		attrs, err := ParseAttributes([]byte(test.Wire))
-		if len(attrs) != 0 {
+		if attrs.Len() != 0 {
 			t.Errorf("(%#x): expected empty attrs, got %v", test.Wire, attrs)
 		} else if err == nil {
 			t.Errorf("(%#x): expected error, got none", test.Wire)
@@ -39,16 +39,16 @@ func TestParseAttributes_maxLength(t *testing.T) {
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
 	}
-	if l := len(attrs[typ]); l != 1 {
+	if l := len(attrs.GetAll(typ)); l != 1 {
 		t.Fatalf("expected one attr, got %d", l)
 	}
-	if !bytes.Equal(b[2:], attrs[typ][0]) {
-		t.Fatalf("expected attr to be all zeros, got %v", attrs[typ][0])
+	if !bytes.Equal(b[2:], attrs.GetAll(typ)[0]) {
+		t.Fatalf("expected attr to be all zeros, got %v", attrs.GetAll(typ)[0])
 	}
 }
 
 func TestAttributes_all(t *testing.T) {
-	a := make(Attributes)
+	a := NewAttributes()
 	a.Add(1, []byte(`A`))
 	a.Add(1, []byte(`A.A`))
 	a.Add(3, []byte(`C`))
@@ -84,7 +84,7 @@ func TestAttributes_encodeTo_deterministic(t *testing.T) {
 	var base []byte
 
 	for i := 0; i < 10000; i++ {
-		a := make(Attributes)
+		a := NewAttributes()
 		a.Add(83, []byte(`C`))
 		a.Add(1, []byte(`A`))
 		a.Add(1, []byte(`A.A`))
